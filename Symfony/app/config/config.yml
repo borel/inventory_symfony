@@ -23,6 +23,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    translator: ~
 
 # Twig Configuration
 twig:
@@ -70,3 +71,38 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# FOS_User Configuration
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: CZS\UserBundle\Entity\User
+
+# fos_rest Configuration
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+        formats:
+            xml: true
+            json : true
+        templating_formats:
+            html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
+    routing_loader:
+        default_format: json
+    service:
+        inflector: czs.userbundle.util.inflector
+
+# app/config/config.yml
+nelmio_api_doc:
+  name:                 'Inventory API documentation'
+
+services:
+    czs.userbundle.util.inflector:
+       class: CZS\UserBundle\Util\NoopInflector
