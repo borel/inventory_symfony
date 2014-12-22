@@ -1,0 +1,11 @@
+user :
+   type: rest
+   resource: "@CZSUserBundle/Controller/UserController.php"
+   name_prefix:  api_
+   prefix : /
+
+equipment :
+   type: rest
+   resource: "@CZSUserBundle/Controller/EquipmentController.php"
+   name_prefix:  api_
+   prefix : /

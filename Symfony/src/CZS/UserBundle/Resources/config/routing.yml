@@ -1,0 +1,13 @@
+czs_user_homepage:
+    path:     /
+    defaults: { _controller: CZSUserBundle:Default:index }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+
+#REST
+rest :
+  type : rest
+  resource : "routing_rest.yml"
+  prefix : /api
